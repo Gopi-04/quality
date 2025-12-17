@@ -13,8 +13,10 @@ sap.ui.define([
         },
 
         onLoginPress: function () {
-            var sUsername = this.getView().byId("userIdInput").getValue();
+            var sUsername = this.getView().byId("userIdInput").getValue().toUpperCase();
             var sPassword = this.getView().byId("passwordInput").getValue();
+
+            console.log("Attempting Login with:", sUsername, sPassword);
 
             if (!sUsername || !sPassword) {
                 MessageToast.show("Please enter both User ID and Password.");
@@ -51,7 +53,8 @@ sap.ui.define([
                         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                         oRouter.navTo("Dashboard");
                     } else {
-                        MessageToast.show("Invalid Credentials");
+                        console.warn("Login successful but no results found. Check filters.");
+                        MessageToast.show("Invalid Credentials. User not found.");
                     }
                 }.bind(this),
                 error: function (oError) {
