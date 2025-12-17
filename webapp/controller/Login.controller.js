@@ -26,18 +26,11 @@ sap.ui.define([
             // Validate against OData Service (Mock or Real)
             var oModel = this.getOwnerComponent().getModel();
 
-            // We use 'read' to fetch the user. In a real scenario, this might be a function import 
-            // or we filter the EntitySet. Security-wise, filtering EntitySet by password is bad practice,
-            // but for this specific requirement "verify in custom table", we will simulate a read with filters.
-            // Ideally, we should POST to a FunctionImport, but standard OData read is easier to mock instantly.
-
             // Define filters for username and password
             var aFilters = [
                 new Filter("username", FilterOperator.EQ, sUsername),
                 new Filter("password", FilterOperator.EQ, sPassword)
             ];
-
-
 
             // Show busy indicator
             sap.ui.core.BusyIndicator.show();
