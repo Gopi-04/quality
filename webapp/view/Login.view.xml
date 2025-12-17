@@ -1,0 +1,46 @@
+<mvc:View
+    controllerName="quality.portal.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    height="100%">
+
+    <FlexBox
+        height="100%"
+        alignItems="Center"
+        justifyContent="Center"
+        direction="Column"
+        renderType="Div">
+
+        <VBox class="glass-card" width="400px" alignItems="Center">
+            <core:Icon src="sap-icon://quality-issue" class="login-icon" />
+            
+            <Title text="{i18n>loginTitle}" class="login-title" level="H1"/>
+            
+            <VBox width="100%" class="sapUiMediumMarginTop">
+                <Label text="{i18n>username}" design="Bold" class="sapUiSmallMarginBottom" style="color: white;"/>
+                <Input
+                    id="userIdInput"
+                    placeholder="Enter User ID"
+                    class="glass-input sapUiMediumMarginBottom"
+                    width="100%"/>
+                
+                <Label text="{i18n>password}" design="Bold" class="sapUiSmallMarginBottom" style="color: white;"/>
+                <Input
+                    id="passwordInput"
+                    type="Password"
+                    placeholder="Enter Password"
+                    class="glass-input sapUiLargeMarginBottom"
+                    width="100%"/>
+                
+                <Button
+                    text="{i18n>loginButton}"
+                    width="100%"
+                    press=".onLoginPress"
+                    class="glass-button"/>
+            </VBox>
+        </VBox>
+
+    </FlexBox>
+</mvc:View>

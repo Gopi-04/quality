@@ -1,37 +1,25 @@
 {
-  "_version": "1.60.0",
+  "_version": "1.12.0",
   "sap.app": {
-    "id": "qualityportal",
+    "id": "quality.portal",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
-      "version": "0.0.1"
+      "version": "1.0.0"
     },
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
-    "resources": "resources.json",
     "sourceTemplate": {
-      "id": "@sap/generator-fiori:basic",
-      "version": "1.20.0",
-      "toolsId": "e9b04a7b-9551-4b76-9abb-6e86bcf770e6"
+      "id": "service.sap.ui5.templates.sap.ui.ui5-template-basic-sapui5-application-descriptor-xml-view",
+      "version": "1.40.12"
     },
     "dataSources": {
-      "ZQP_LOGIN_GP_CDS_VAN": {
-        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZQP_LOGIN_GP_CDS_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/mainService/ZQP_LOGIN_GP_CDS_VAN.xml"
-        }
-      },
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZQP_LOGIN_GP_CDS/",
+        "uri": "/sap/opu/odata/sap/ZQUALITY_PCK_GP_SRV/",
         "type": "OData",
         "settings": {
-          "annotations": [
-            "ZQP_LOGIN_GP_CDS_VAN"
-          ],
-          "localUri": "localService/mainService/metadata.xml",
-          "odataVersion": "2.0"
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
         }
       }
     }
@@ -54,11 +42,19 @@
   },
   "sap.ui5": {
     "flexEnabled": true,
+    "rootView": {
+      "viewName": "quality.portal.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
     "dependencies": {
-      "minUI5Version": "1.120.14",
+      "minUI5Version": "1.65.6",
       "libs": {
+        "sap.ui.core": {},
         "sap.m": {},
-        "sap.ui.core": {}
+        "sap.f": {},
+        "sap.ui.layout": {}
       }
     },
     "contentDensities": {
@@ -69,13 +65,15 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "qualityportal.i18n.i18n"
+          "bundleName": "quality.portal.i18n.i18n"
         }
       },
       "": {
         "dataSource": "mainService",
         "preload": true,
-        "settings": {}
+        "settings": {
+          "defaultBindingMode": "TwoWay"
+        }
       }
     },
     "resources": {
@@ -88,36 +86,39 @@
     "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "quality.portal.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "transition": "slide",
-        "type": "View",
-        "viewType": "XML",
-        "path": "qualityportal.view",
-        "async": true,
-        "viewPath": "qualityportal.view"
+        "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "RouteView1",
-          "pattern": ":?query:",
+          "name": "Login",
+          "pattern": "",
           "target": [
-            "TargetView1"
+            "Login"
+          ]
+        },
+        {
+          "name": "Dashboard",
+          "pattern": "dashboard",
+          "target": [
+            "Dashboard"
           ]
         }
       ],
       "targets": {
-        "TargetView1": {
-          "id": "View1",
-          "name": "View1"
+        "Login": {
+          "viewName": "Login",
+          "viewLevel": 1
+        },
+        "Dashboard": {
+          "viewName": "Dashboard",
+          "viewLevel": 2
         }
       }
-    },
-    "rootView": {
-      "viewName": "qualityportal.view.App",
-      "type": "XML",
-      "id": "App",
-      "async": true
     }
   }
 }

@@ -1,0 +1,29 @@
+[
+    {
+        "InspectionLot": "8900000001",
+        "Material": "WHEEL_SET_01",
+        "Plant": "1010",
+        "TotalQty": "100",
+        "InspectedQty": "30",
+        "Status": "IN_PROGRESS",
+        "UsageDecision": ""
+    },
+    {
+        "InspectionLot": "8900000002",
+        "Material": "HANDLEBAR_02",
+        "Plant": "1010",
+        "TotalQty": "50",
+        "InspectedQty": "50",
+        "Status": "COMPLETED",
+        "UsageDecision": "APPROVED"
+    },
+    {
+        "InspectionLot": "8900000003",
+        "Material": "FRAME_X2",
+        "Plant": "1010",
+        "TotalQty": "200",
+        "InspectedQty": "0",
+        "Status": "NEW",
+        "UsageDecision": ""
+    }
+]

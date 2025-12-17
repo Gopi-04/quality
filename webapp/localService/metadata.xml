@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+             xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+             xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZQUALITY_PCK_GP_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            
+            <EntityType Name="ZQP_LOGIN_GP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Userid"/>
+                </Key>
+                <Property Name="Userid" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="User ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true"/>
+                <Property Name="Password" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Password" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true"/>
+                <Property Name="Role" Type="Edm.String" Nullable="true" MaxLength="20" sap:label="Role" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+
+             <EntityType Name="ZQP_INSPECTION_GP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="InspectionLot"/>
+                </Key>
+                <Property Name="InspectionLot" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Inspection Lot"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:label="Material"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:label="Plant"/>
+                <Property Name="TotalQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Total Qty"/>
+                <Property Name="InspectedQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Inspected Qty"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="UsageDecision" Type="Edm.String" MaxLength="20" sap:label="Usage Decision"/>
+            </EntityType>
+            
+            <EntityContainer Name="ZQUALITY_PCK_GP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZQP_LOGIN_GP" EntityType="ZQUALITY_PCK_GP_SRV.ZQP_LOGIN_GP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZQP_INSPECTION_GP" EntityType="ZQUALITY_PCK_GP_SRV.ZQP_INSPECTION_GP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,1 +1,112 @@
-/* Enter your custom styles here */
+/* Custom CSS for Quality Portal */
+
+/* Background */
+.sapUiBody {
+    background-image: url('../img/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Outfit', sans-serif !important;
+}
+
+/* Glassmorphism Card for Login */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 2rem;
+}
+
+/* Login Title */
+.login-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Input Fields styling overrides */
+.glass-input .sapMInputBaseContentWrapper {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px;
+    color: #ffffff !important;
+}
+
+.glass-input input {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+.glass-input ::placeholder {
+    color: #e0e0e0;
+    opacity: 0.8;
+}
+
+/* Button Styling */
+.glass-button .sapMBtnInner {
+    background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.glass-button:hover .sapMBtnInner {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6);
+}
+
+
+/* Logo or Icon styling if any */
+.login-icon {
+    font-size: 4rem;
+    color: #00C6FF;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(0, 198, 255, 0.5));
+}
+
+/* Dashboard Styles */
+.glass-page .sapMPageHeader {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-header-text {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Custom Tile Styling */
+.glass-tile {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.glass-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-tile .sapMGTHeader,
+.glass-tile .sapMGTSubHdr,
+.glass-tile .sapMNCValue {
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}

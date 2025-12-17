@@ -1,0 +1,69 @@
+<mvc:View
+    controllerName="quality.portal.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    height="100%">
+
+    <Page
+        id="dashboardPage"
+        title="{i18n>dashboardTitle}"
+        backgroundDesign="Transparent"
+        showNavButton="false"
+        class="glass-page">
+        
+        <headerContent>
+            <Button icon="sap-icon://log" press=".onLogout" type="Transparent" tooltip="Logout"/>
+        </headerContent>
+
+        <content>
+            <VBox class="sapUiLargeMargin">
+                <Title text="Overview" level="H2" class="glass-header-text sapUiMediumMarginBottom"/>
+
+                <grid:CSSGrid
+                    gridTemplateColumns="repeat(auto-fit, minmax(300px, 1fr))"
+                    gridGap="2rem">
+                    
+                    <!-- Inspection Lot Tile -->
+                    <GenericTile
+                        class="glass-tile"
+                        header="Inspection Lots"
+                        subheader="Manage Pending Lots"
+                        press=".onNavToInspectionLots">
+                        <TileContent>
+                            <NumericContent value="3" icon="sap-icon://inspection" indicator="Up" valueColor="Good" />
+                        </TileContent>
+                    </GenericTile>
+
+                    <!-- Result Recording Tile -->
+                    <GenericTile
+                        class="glass-tile"
+                        header="Result Recording"
+                        subheader="Record Quality Data"
+                        press=".onNavToResultRecording">
+                        <TileContent>
+                            <TileContent footer="Pending Actions">
+                                <NumericContent value="1" icon="sap-icon://clinical-tast-tracker" valueColor="Critical" />
+                            </TileContent>
+                        </TileContent>
+                    </GenericTile>
+
+                    <!-- Usage Decision Tile -->
+                    <GenericTile
+                        class="glass-tile"
+                        header="Usage Decision"
+                        subheader="Approve or Reject"
+                        press=".onNavToUsageDecision">
+                        <TileContent>
+                            <NumericContent value="5" icon="sap-icon://decision" valueColor="Neutral" />
+                        </TileContent>
+                    </GenericTile>
+                    
+                </grid:CSSGrid>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
