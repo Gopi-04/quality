@@ -26,11 +26,18 @@ sap.ui.define([
             // Validate against OData Service (Mock or Real)
             var oModel = this.getOwnerComponent().getModel();
 
+            // We use 'read' to fetch the user. In a real scenario, this might be a function import 
+            // or we filter the EntitySet. Security-wise, filtering EntitySet by password is bad practice,
+            // but for this specific requirement "verify in custom table", we will simulate a read with filters.
+            // Ideally, we should POST to a FunctionImport, but standard OData read is easier to mock instantly.
+
             // Define filters for username and password
             var aFilters = [
                 new Filter("username", FilterOperator.EQ, sUsername),
                 new Filter("password", FilterOperator.EQ, sPassword)
             ];
+
+
 
             // Show busy indicator
             sap.ui.core.BusyIndicator.show();
@@ -64,19 +71,7 @@ sap.ui.define([
                 error: function (oError) {
                     console.error("Login read error", oError);
                     sap.ui.core.BusyIndicator.hide();
-
-                    var sErrorMsg = "Login Failed.";
-                    if (oError.statusCode) {
-                        sErrorMsg += " Status: " + oError.statusCode;
-                    }
-                    if (oError.statusText) {
-                        sErrorMsg += " " + oError.statusText;
-                    }
-                    if (oError.statusCode === 0 || oError.statusCode === "0") {
-                        sErrorMsg += " (Check Network/VPN)";
-                    }
-
-                    MessageToast.show(sErrorMsg);
+                    MessageToast.show("Login Failed. Please check network or service.");
                 }
             });
         }
