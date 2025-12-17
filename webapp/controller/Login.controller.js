@@ -31,22 +31,28 @@ sap.ui.define([
             // but for this specific requirement "verify in custom table", we will simulate a read with filters.
             // Ideally, we should POST to a FunctionImport, but standard OData read is easier to mock instantly.
 
-            var aFilters = [
-                new Filter("username", FilterOperator.EQ, sUsername),
-                new Filter("password", FilterOperator.EQ, sPassword)
-            ];
+            // Fetch ALL users and filter client-side to avoid Mock Server filter issues
+            // This is a workaround for the mock environment being flaky with filters
+            console.log("Fetching all users to validate client-side...");
 
             // Show busy indicator
             sap.ui.core.BusyIndicator.show();
 
             oModel.read("/ZQP_LOGIN_GP", {
-                filters: aFilters,
                 success: function (oData) {
-                    console.log("Login read success", oData);
                     sap.ui.core.BusyIndicator.hide();
-                    // If we get a result, login is successful
-                    if (oData.results && oData.results.length > 0) {
-                        var oUser = oData.results[0];
+                    console.log("Login read success. Total users found:", oData.results.length);
+                    console.log("Available Users:", oData.results);
+
+                    var oUser = null;
+                    if (oData.results) {
+                        // Client-side find
+                        oUser = oData.results.find(function (user) {
+                            return user.username.toUpperCase() === sUsername && user.password === sPassword;
+                        });
+                    }
+
+                    if (oUser) {
                         MessageToast.show("Welcome " + oUser.username);
 
                         // Check login status if needed
@@ -58,7 +64,7 @@ sap.ui.define([
                             MessageToast.show("Login Status: " + oUser.login_status);
                         }
                     } else {
-                        console.warn("Login successful but no results found. Check filters.");
+                        console.warn("User not found in list. Searched for:", sUsername, sPassword);
                         MessageToast.show("Invalid Credentials. User not found.");
                     }
                 }.bind(this),
