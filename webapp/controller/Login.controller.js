@@ -31,28 +31,28 @@ sap.ui.define([
             // but for this specific requirement "verify in custom table", we will simulate a read with filters.
             // Ideally, we should POST to a FunctionImport, but standard OData read is easier to mock instantly.
 
-            // Fetch ALL users and filter client-side to avoid Mock Server filter issues
-            // This is a workaround for the mock environment being flaky with filters
-            console.log("Fetching all users to validate client-side...");
+            // Define filters for username and password
+            var aFilters = [
+                new Filter("username", FilterOperator.EQ, sUsername),
+                new Filter("password", FilterOperator.EQ, sPassword)
+            ];
+
+
 
             // Show busy indicator
             sap.ui.core.BusyIndicator.show();
 
+            // Server-Side Validation (Real Backend)
             oModel.read("/ZQP_LOGIN_GP", {
+                filters: aFilters,
                 success: function (oData) {
                     sap.ui.core.BusyIndicator.hide();
-                    console.log("Login read success. Total users found:", oData.results.length);
-                    console.log("Available Users:", oData.results);
+                    console.log("Login response:", oData);
 
-                    var oUser = null;
-                    if (oData.results) {
-                        // Client-side find
-                        oUser = oData.results.find(function (user) {
-                            return user.username.toUpperCase() === sUsername && user.password === sPassword;
-                        });
-                    }
-
-                    if (oUser) {
+                    // For Real Backend, the server filters the data. 
+                    // If credentials match, we get 1 record. If not, we get 0.
+                    if (oData.results && oData.results.length > 0) {
+                        var oUser = oData.results[0];
                         MessageToast.show("Welcome " + oUser.username);
 
                         // Check login status if needed
@@ -64,8 +64,8 @@ sap.ui.define([
                             MessageToast.show("Login Status: " + oUser.login_status);
                         }
                     } else {
-                        console.warn("User not found in list. Searched for:", sUsername, sPassword);
-                        MessageToast.show("Invalid Credentials. User not found.");
+                        console.warn("Login successful but no results found. Check filters.");
+                        MessageToast.show("Invalid Credentials. User not found in Backend.");
                     }
                 }.bind(this),
                 error: function (oError) {
