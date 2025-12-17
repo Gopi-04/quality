@@ -8,5 +8,11 @@
         "Userid": "ADMIN",
         "Password": "password123",
         "Role": "ADMIN"
+    },
+    {
+        "Userid": "1",
+        "Password": "123",
+        "Role": "QE"
     }
 ]
+```
