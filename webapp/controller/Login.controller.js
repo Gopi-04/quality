@@ -71,7 +71,19 @@ sap.ui.define([
                 error: function (oError) {
                     console.error("Login read error", oError);
                     sap.ui.core.BusyIndicator.hide();
-                    MessageToast.show("Login Failed. Please check network or service.");
+
+                    var sErrorMsg = "Login Failed.";
+                    if (oError.statusCode) {
+                        sErrorMsg += " Status: " + oError.statusCode;
+                    }
+                    if (oError.statusText) {
+                        sErrorMsg += " " + oError.statusText;
+                    }
+                    if (oError.statusCode === 0 || oError.statusCode === "0") {
+                        sErrorMsg += " (Check Network/VPN)";
+                    }
+
+                    MessageToast.show(sErrorMsg);
                 }
             });
         }
