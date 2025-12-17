@@ -40,6 +40,7 @@ sap.ui.define([
             oModel.read("/ZQP_LOGIN_GP", {
                 filters: aFilters,
                 success: function (oData) {
+                    console.log("Login read success", oData);
                     sap.ui.core.BusyIndicator.hide();
                     // If we get a result, login is successful
                     if (oData.results && oData.results.length > 0) {
@@ -54,6 +55,7 @@ sap.ui.define([
                     }
                 }.bind(this),
                 error: function (oError) {
+                    console.error("Login read error", oError);
                     sap.ui.core.BusyIndicator.hide();
                     MessageToast.show("Login Failed. Please check network or service.");
                 }
