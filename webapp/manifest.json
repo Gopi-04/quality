@@ -107,6 +107,13 @@
           "target": [
             "Dashboard"
           ]
+        },
+        {
+          "name": "InspectionLots",
+          "pattern": "inspection-lots",
+          "target": [
+            "InspectionLots"
+          ]
         }
       ],
       "targets": {
@@ -117,6 +124,10 @@
         "Dashboard": {
           "viewName": "Dashboard",
           "viewLevel": 2
+        },
+        "InspectionLots": {
+          "viewName": "InspectionLots",
+          "viewLevel": 3
         }
       }
     }

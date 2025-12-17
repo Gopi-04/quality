@@ -1,0 +1,90 @@
+<mvc:View
+    controllerName="quality.portal.controller.InspectionLots"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    height="100%">
+
+    <Page
+        id="inspectionLotsPage"
+        title="Inspection Lots"
+        showNavButton="true"
+        navButtonPress=".onNavBack"
+        backgroundDesign="Transparent"
+        class="glass-page">
+
+        <content>
+            <Table
+                id="idInspectionTable"
+                inset="false"
+                items="{/ZQP_INSPECTION_GP}"
+                class="glass-table sapUiResponsiveMargin"
+                width="auto">
+                <headerToolbar>
+                    <OverflowToolbar class="glass-toolbar">
+                        <content>
+                            <Title text="Pending Inspections" level="H2" class="glass-header-text"/>
+                            <ToolbarSpacer />
+                            <SearchField width="200px" placeholder="Search Lot..." class="glass-search"/>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="12em">
+                        <Text text="Inspection Lot" class="glass-label-bold"/>
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Material" class="glass-label-bold"/>
+                    </Column>
+                     <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+                        <Text text="Plant" class="glass-label-bold"/>
+                    </Column>
+                    <Column hAlign="End">
+                        <Text text="Total Qty" class="glass-label-bold"/>
+                    </Column>
+                    <Column hAlign="End">
+                        <Text text="Inspected" class="glass-label-bold"/>
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="Status" class="glass-label-bold"/>
+                    </Column>
+                     <Column hAlign="Center">
+                        <Text text="Decision" class="glass-label-bold"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation" press=".onPressLot" class="glass-list-item">
+                        <cells>
+                            <ObjectIdentifier title="{InspectionLot}" />
+                            <Text text="{Material}" />
+                            <Text text="{Plant}" />
+                            <Text text="{TotalQty}" />
+                            <Text text="{InspectedQty}" />
+                            <ObjectStatus
+                                text="{Status}"
+                                state="{
+                                    path: 'Status',
+                                    formatter: '.formatter.statusState'
+                                }"
+                                icon="{
+                                    path: 'Status',
+                                    formatter: '.formatter.statusIcon'
+                                }"/>
+                            <ObjectStatus
+                                text="{UsageDecision}"
+                                state="{
+                                    path: 'UsageDecision',
+                                    formatter: '.formatter.decisionState'
+                                }"
+                                icon="{
+                                    path: 'UsageDecision',
+                                    formatter: '.formatter.decisionIcon'
+                                }"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

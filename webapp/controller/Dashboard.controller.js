@@ -17,10 +17,8 @@ sap.ui.define([
         },
 
         onNavToInspectionLots: function () {
-            // Placeholder: Navigate to detail page
-            sap.m.MessageToast.show("Navigating to Inspection Lots...");
-            // var oRouter = UIComponent.getRouterFor(this);
-            // oRouter.navTo("InspectionLots");
+            var oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("InspectionLots");
         },
 
         onNavToResultRecording: function () {
