@@ -19,14 +19,14 @@
             <Title text="{i18n>loginTitle}" class="login-title" level="H1"/>
             
             <VBox width="100%" class="sapUiMediumMarginTop">
-                <Label text="{i18n>username}" design="Bold" class="sapUiSmallMarginBottom" style="color: white;"/>
+                <Label text="{i18n>username}" design="Bold" class="sapUiSmallMarginBottom glass-label-white"/>
                 <Input
                     id="userIdInput"
                     placeholder="Enter User ID"
                     class="glass-input sapUiMediumMarginBottom"
                     width="100%"/>
                 
-                <Label text="{i18n>password}" design="Bold" class="sapUiSmallMarginBottom" style="color: white;"/>
+                <Label text="{i18n>password}" design="Bold" class="sapUiSmallMarginBottom glass-label-white"/>
                 <Input
                     id="passwordInput"
                     type="Password"

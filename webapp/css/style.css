@@ -150,3 +150,7 @@
 .glass-list-item .sapMObjIdentifierTitle {
     color: #f0f0f0 !important;
 }
+
+.glass-label-white {
+    color: white !important;
+}
