@@ -32,8 +32,8 @@ sap.ui.define([
             // Ideally, we should POST to a FunctionImport, but standard OData read is easier to mock instantly.
 
             var aFilters = [
-                new Filter("Userid", FilterOperator.EQ, sUsername),
-                new Filter("Password", FilterOperator.EQ, sPassword)
+                new Filter("username", FilterOperator.EQ, sUsername),
+                new Filter("password", FilterOperator.EQ, sPassword)
             ];
 
             // Show busy indicator
@@ -47,11 +47,16 @@ sap.ui.define([
                     // If we get a result, login is successful
                     if (oData.results && oData.results.length > 0) {
                         var oUser = oData.results[0];
-                        MessageToast.show("Welcome " + oUser.Userid);
+                        MessageToast.show("Welcome " + oUser.username);
 
-                        // Navigate to Dashboard
-                        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-                        oRouter.navTo("Dashboard");
+                        // Check login status if needed
+                        if (oUser.login_status === "Success") {
+                            // Navigate to Dashboard
+                            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                            oRouter.navTo("Dashboard");
+                        } else {
+                            MessageToast.show("Login Status: " + oUser.login_status);
+                        }
                     } else {
                         console.warn("Login successful but no results found. Check filters.");
                         MessageToast.show("Invalid Credentials. User not found.");

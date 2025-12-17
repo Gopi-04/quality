@@ -7,11 +7,11 @@
             
             <EntityType Name="ZQP_LOGIN_GP" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Userid"/>
+                    <PropertyRef Name="username"/>
                 </Key>
-                <Property Name="Userid" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="User ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true"/>
-                <Property Name="Password" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Password" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true"/>
-                <Property Name="Role" Type="Edm.String" Nullable="true" MaxLength="20" sap:label="Role" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="username" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true"/>
+                <Property Name="password" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Password" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true"/>
+                <Property Name="login_status" Type="Edm.String" Nullable="true" MaxLength="20" sap:label="Login Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
 
              <EntityType Name="ZQP_INSPECTION_GP" sap:content-version="1">
