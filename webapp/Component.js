@@ -20,6 +20,21 @@ sap.ui.define([
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 
+			// Global Error Handler for Metadata
+			var oModel = this.getModel();
+			if (oModel) {
+				oModel.attachMetadataFailed(function (oEvent) {
+					var oParams = oEvent.getParameters();
+					var sMessage = "Backend Service Connection Failed.";
+					if (oParams.response) {
+						sMessage += " Status: " + oParams.response.statusCode;
+						sMessage += " (" + oParams.response.statusText + ")";
+					}
+					sap.m.MessageToast.show(sMessage + " Check Service URL/VPN.");
+					console.error("Metadata Failed:", oParams);
+				});
+			}
+
 			// enable routing
 			this.getRouter().initialize();
 
