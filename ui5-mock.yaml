@@ -2,7 +2,7 @@
 
 specVersion: "4.0"
 metadata:
-  name: qualityportal
+  name: quality.portal
 type: application
 server:
   customMiddleware:
@@ -35,10 +35,8 @@ server:
       configuration:
         mountPath: /
         services:
-          - urlPath: /sap/opu/odata/sap/ZQP_LOGIN_GP_CDS
-            metadataPath: ./webapp/localService/mainService/metadata.xml
-            mockdataPath: ./webapp/localService/mainService/data
+          - urlPath: /sap/opu/odata/sap/ZQUALITY_PCK_GP_SRV
+            metadataPath: ./webapp/localService/metadata.xml
+            mockdataPath: ./webapp/localService/mockdata
             generateMockData: true
-        annotations:
-          - localPath: ./webapp/localService/mainService/ZQP_LOGIN_GP_CDS_VAN.xml
-            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZQP_LOGIN_GP_CDS_VAN',Version='0001')/$value/
+        annotations: []
