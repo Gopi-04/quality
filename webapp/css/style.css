@@ -11,8 +11,8 @@
 
 /* Glassmorphism Card for Login */
 .glass-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 198, 255, 0.05));
-    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
