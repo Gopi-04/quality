@@ -15,7 +15,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZQUALITY_PCK_GP_SRV/",
+        "uri": "/sap/opu/odata/sap/ZQUALITY_2003_CDS/",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0",
